@@ -1,0 +1,21 @@
+Ticker,Name,Sector,Market,Weight,Allocation,Factor Score
+FMG.AX,Fortescue Metals,Materials,ASX,15.63,15631.75,65.7
+NVDA,Nvidia,Technology,SP500,15.63,15631.75,79.9
+MSFT,Microsoft,Technology,SP500,10.14,10136.83,74.6
+XOM,ExxonMobil,Energy,SP500,7.69,7688.33,62.5
+TLS.AX,Telstra,Communication,ASX,6.45,6449.46,60.5
+AAPL,Apple,Technology,SP500,6.34,6336.44,74.0
+BHP.AX,BHP Group,Materials,ASX,5.46,5464.87,61.9
+GOOGL,Alphabet,Technology,SP500,4.64,4635.47,80.8
+ANZ.AX,ANZ Bank,Financials,ASX,4.06,4057.15,70.8
+RIO.AX,Rio Tinto,Materials,ASX,3.88,3876.48,66.0
+WES.AX,Wesfarmers,Consumer Discretionary,ASX,3.71,3707.63,68.5
+BRK-B,Berkshire Hathaway,Financials,SP500,3.69,3688.24,68.7
+V,Visa,Financials,SP500,2.94,2942.78,75.7
+JPM,JPMorgan Chase,Financials,SP500,2.86,2862.23,85.1
+AMZN,Amazon,Consumer Discretionary,SP500,2.0,1998.84,64.9
+MQG.AX,Macquarie Group,Financials,ASX,1.95,1945.2,74.9
+CSL.AX,CSL Limited,Healthcare,ASX,0.99,987.01,67.7
+CBA.AX,Commonwealth Bank,Financials,ASX,0.93,933.6,77.8
+JNJ,Johnson and Johnson,Healthcare,SP500,0.87,871.94,66.5
+WBC.AX,Westpac,Financials,ASX,0.15,154.03,79.3
