@@ -59,6 +59,72 @@ st.sidebar.markdown(f"**{len(ALL_TICKERS)} stocks** across "
 
 # ── Main Page ────────────────────────────────────────────────
 st.title("📈 AlgoTrade Pro")
+
+st.markdown("""
+<div style='background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 24px; border-radius: 12px;
+            border-left: 4px solid #00ff88; margin-bottom: 20px;'>
+
+<h3 style='color: #00ff88; margin-top: 0;'>
+    Institutional Grade Algorithmic Trading Platform
+</h3>
+
+<p style='color: #cccccc; font-size: 15px; line-height: 1.7;'>
+    <b style='color: white;'>AlgoTrade Pro</b> is a professional quantitative trading platform
+    that combines three independent analysis engines into a single unified signal system —
+    giving you the same analytical power used by hedge funds and institutional investors,
+    built entirely in Python.
+</p>
+
+<hr style='border-color: #333; margin: 16px 0;'>
+
+<div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;'>
+
+<div>
+<h4 style='color: #00aaff; margin-bottom: 8px;'>📊 What it covers</h4>
+<ul style='color: #aaaaaa; font-size: 13px; line-height: 1.8; padding-left: 16px;'>
+    <li>20 stocks — ASX + S&P 500</li>
+    <li>5 years of historical data</li>
+    <li>Real time live price feed</li>
+    <li>Daily automated analysis</li>
+    <li>Portfolio optimization</li>
+</ul>
+</div>
+
+<div>
+<h4 style='color: #ffaa00; margin-bottom: 8px;'>🔬 How it works</h4>
+<ul style='color: #aaaaaa; font-size: 13px; line-height: 1.8; padding-left: 16px;'>
+    <li>Technical Analysis + SMC signals</li>
+    <li>Fundamental Analysis + DCF valuation</li>
+    <li>FinBERT AI news sentiment</li>
+    <li>7 Factor Model ranking</li>
+    <li>Monte Carlo portfolio optimizer</li>
+</ul>
+</div>
+
+<div>
+<h4 style='color: #ff4444; margin-bottom: 8px;'>⚙️ Risk controls</h4>
+<ul style='color: #aaaaaa; font-size: 13px; line-height: 1.8; padding-left: 16px;'>
+    <li>Value at Risk (VaR 95% + 99%)</li>
+    <li>Max 15% per stock</li>
+    <li>Max 35% per sector</li>
+    <li>Sharpe Ratio: 1.18</li>
+    <li>Correlation matrix monitoring</li>
+</ul>
+</div>
+
+</div>
+
+<hr style='border-color: #333; margin: 16px 0;'>
+
+<p style='color: #888888; font-size: 12px; margin-bottom: 0;'>
+    📍 Universe: CBA.AX · BHP.AX · CSL.AX · WBC.AX · ANZ.AX · WES.AX ·
+    TLS.AX · RIO.AX · FMG.AX · MQG.AX · AAPL · MSFT · GOOGL · AMZN ·
+    NVDA · JPM · JNJ · XOM · BRK-B · V
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 # Auto refresh every 5 minutes during market hours
 from datetime import datetime
 current_hour = datetime.now().hour
