@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -56,6 +59,16 @@ st.sidebar.markdown(f"**{len(ALL_TICKERS)} stocks** across "
 
 # ── Main Page ────────────────────────────────────────────────
 st.title("📈 AlgoTrade Pro")
+# Auto refresh every 5 minutes during market hours
+from datetime import datetime
+current_hour = datetime.now().hour
+if 9 <= current_hour <= 16:
+    st.empty()
+    import time
+    st.markdown(
+        "<meta http-equiv='refresh' content='300'>",
+        unsafe_allow_html=True
+    )
 st.markdown("### Institutional Grade Portfolio Management Platform")
 st.divider()
 
@@ -170,6 +183,63 @@ with col2:
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.warning("Run portfolio/optimizer.py first")
+# ── Live Market Prices ────────────────────────────────────────
+st.subheader("📡 Live Market Prices")
+
+@st.cache_data(ttl=300)  # refresh every 5 minutes
+def load_live_prices():
+    try:
+        return pd.read_csv("data/live_prices.csv")
+    except:
+        return None
+
+live_df = load_live_prices()
+
+if live_df is not None:
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("**🇦🇺 ASX Stocks**")
+        asx = live_df[live_df["ticker"].str.contains(
+            r"\.AX", regex=True)].copy()
+        for _, row in asx.iterrows():
+            color = "🟢" if row["change_pct"] >= 0 else "🔴"
+            st.markdown(
+                f"{color} **{row['ticker']}** &nbsp;&nbsp;"
+                f"A${row['price']:.2f} &nbsp;"
+                f"`{row['change_pct']:+.2f}%`"
+            )
+
+    with col2:
+        st.markdown("**🇺🇸 S&P Stocks**")
+        sp = live_df[~live_df["ticker"].str.contains(
+            r"\.AX", regex=True)].copy()
+        for _, row in sp.iterrows():
+            color = "🟢" if row["change_pct"] >= 0 else "🔴"
+            st.markdown(
+                f"{color} **{row['ticker']}** &nbsp;&nbsp;"
+                f"${row['price']:.2f} &nbsp;"
+                f"`{row['change_pct']:+.2f}%`"
+            )
+
+    # Top movers
+    st.markdown("**🔥 Top Movers Today**")
+    col1, col2, col3, col4, col5 = st.columns(5)
+    top5 = live_df.nlargest(5, "change_pct")
+    cols = [col1, col2, col3, col4, col5]
+    for i, (_, row) in enumerate(top5.iterrows()):
+        cols[i].metric(
+            row["ticker"],
+            f"${row['price']:.2f}",
+            f"{row['change_pct']:+.2f}%"
+        )
+
+    st.caption(
+        f"Last updated: {live_df['timestamp'].iloc[0]} "
+        f"| Auto-refreshes every 5 minutes"
+    )
+else:
+    st.info("💡 Run `python data/realtime.py` to load live prices")
 
 st.divider()
 
